@@ -5,6 +5,9 @@
  */
 package UI;
 
+import Control.ValidarLogin;
+import Entidad.Usuario;
+
 /**
  *
  * @author Estudiante
@@ -40,6 +43,11 @@ public class Ingreso extends javax.swing.JPanel {
         jLabel2.setText("Contraseña");
 
         aceptarB.setText("Aceptar");
+        aceptarB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aceptarBActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -77,6 +85,19 @@ public class Ingreso extends javax.swing.JPanel {
                 .addGap(43, 43, 43))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void aceptarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarBActionPerformed
+        Usuario u = new Usuario();
+        u.setNombre(nombreTF.getText());
+        u.setPassword(passTF.getText());
+        
+        ValidarLogin validar= new ValidarLogin();
+        
+        String result= validar.verificarLogin(u);
+        System.out.println(result);
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_aceptarBActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

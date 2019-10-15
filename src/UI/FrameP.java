@@ -5,6 +5,9 @@
  */
 package UI;
 
+import Entidad.*;
+import java.util.ArrayList;
+
 /**
  *
  * @author Estudiante
@@ -12,11 +15,14 @@ package UI;
 public class FrameP extends javax.swing.JFrame {
     private Registro registro=new Registro();
     private Ingreso ingreso=new Ingreso();
+    
+    public static Sistema sistema= new Sistema();
     /**
      * Creates new form FrameP
      */
     public FrameP() {
         initComponents();
+        inicializacion();
     }
 
     /**
@@ -143,6 +149,37 @@ public class FrameP extends javax.swing.JFrame {
                 new FrameP().setVisible(true);
             }
         });
+    }
+    
+    
+    
+    public void inicializacion(){
+        
+        //creacion del arreglo para los usuarios
+        ArrayList<Usuario> usuarios=new ArrayList<Usuario>();
+        
+        
+        Usuario a = new Usuario();
+        Usuario b = new Usuario();
+        Usuario c = new Usuario();
+        
+       a.setNombre("juan");
+       a.setPassword("1234");
+       b.setNombre("maria");
+       b.setPassword("1234");
+       c.setNombre("felipe");
+       c.setPassword("1234");
+       
+       usuarios.add(a);
+       usuarios.add(b);
+       usuarios.add(c);
+        
+       sistema.setUsuarios(usuarios);
+       
+       
+       for (Usuario u: sistema.getUsuarios()){
+           System.out.println("name:"+u.getNombre()+", pass:"+u.getPassword());
+       }
     }
 
     
