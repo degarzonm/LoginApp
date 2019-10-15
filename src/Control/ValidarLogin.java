@@ -1,12 +1,13 @@
 package Control;
 import Entidad.*;
-import UI.*;
+import UI.FrameP;
 
+import static UI.FrameP.sistema;
 
 
 public class ValidarLogin {
     
-    private Sistema sistema = FrameP.sistema;
+    private Sistema sis = FrameP.sistema;
     
     public ValidarLogin(){
         
@@ -14,13 +15,13 @@ public class ValidarLogin {
     
     public String verificarLogin(Usuario u){
         
-        if(verificarLongitudnombre(u.getNombre())){
-            return "longitud nombre incorrecta, debe estar entre 2 y 6";
+        if(!verificarLongitudnombre(u.getNombre())){
+            return "longitud de nombre incorrecta";
         }
-        if(verificarLongitudPassword(u.getNombre())){
+        if(!verificarLongitudPassword(u.getPassword())){
             return "longitud contraseña incorrecta";
         }
-        for(Usuario x: sistema.getUsuarios()){
+        for(Usuario x: sis.getUsuarios()){
             if(u.getNombre().equals(x.getNombre()) &&
                u.getPassword().equals(x.getPassword())     
                ){
